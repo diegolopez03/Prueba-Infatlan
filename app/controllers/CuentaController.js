@@ -3,9 +3,9 @@ const Cuenta = db.cuentas;
 const Op = db.Sequelize.Op;
 
 
-exports.create = (req, res) => {
+exports.createCuenta = (req, res) => {
  
-  if (!req.body.title) {
+  if (!req.body.saldo) {
     res.status(400).send({
       message: "No puede ir vacio"
     });
@@ -15,7 +15,9 @@ exports.create = (req, res) => {
 
   const cuenta = {
     saldo: req.body.saldo,
-    estado: req.body.estado ? req.body.estado : false
+    estado: req.body.estado ? req.body.estado : true,
+    clienteId : req.body.clienteId,
+    tipoCuentaId : req.body.tipoCuentaId
   };
 
 
@@ -26,15 +28,15 @@ exports.create = (req, res) => {
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Error"
+          err.message || "Error al crear la cuenta"
       });
     });
 };
 
 
-exports.findAll = (req, res) => {
-  const title = req.query.title;
-  var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
+exports.findAllCuentas = (req, res) => {
+  const saldo = req.query.saldo;
+  var condition = saldo ? { saldo: { [Op.like]: `%${saldo}%` } } : null;
 
   Cuenta.findAll({ where: condition })
     .then(data => {
@@ -49,7 +51,7 @@ exports.findAll = (req, res) => {
 };
 
 
-exports.findOne = (req, res) => {
+exports.findOneCuenta = (req, res) => {
   const id = req.params.id;
 
   Cuenta.findByPk(id)
@@ -64,7 +66,7 @@ exports.findOne = (req, res) => {
 };
 
 
-exports.update = (req, res) => {
+exports.updateCuenta = (req, res) => {
   const id = req.params.id;
 
   Cuenta.update(req.body, {
@@ -89,7 +91,7 @@ exports.update = (req, res) => {
 };
 
 
-exports.delete = (req, res) => {
+exports.deleteCuenta = (req, res) => {
   const id = req.params.id;
 
   Cuenta.destroy({
@@ -113,7 +115,7 @@ exports.delete = (req, res) => {
     });
 };
 
-exports.deleteAll = (req, res) => {
+exports.deleteAllCuentas = (req, res) => {
     Cuenta.destroy({
     where: {},
     truncate: false

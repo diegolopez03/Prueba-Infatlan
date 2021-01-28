@@ -1,11 +1,11 @@
 const db = require("../models");
-const TipoCuenta = db.TipoCuenta;
+const TipoCuenta = db.tipoCuentas;
 const Op = db.Sequelize.Op;
 
 
-exports.create = (req, res) => {
+exports.createTipoCuenta = (req, res) => {
  
-  if (!req.body.title) {
+  if (!req.body.tipo) {
     res.status(400).send({
       message: "No puede ir vacio"
     });
@@ -31,9 +31,9 @@ exports.create = (req, res) => {
 };
 
 
-exports.findAll = (req, res) => {
-  const title = req.query.title;
-  var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
+exports.findAllTipoCuentas = (req, res) => {
+  const tipo = req.query.tipo;
+  var condition = tipo ? { tipo: { [Op.like]: `%${tipo}%` } } : null;
 
   TipoCuenta.findAll({ where: condition })
     .then(data => {
@@ -48,7 +48,7 @@ exports.findAll = (req, res) => {
 };
 
 
-exports.findOne = (req, res) => {
+exports.findOneTipoCuenta = (req, res) => {
   const id = req.params.id;
 
   TipoCuenta.findByPk(id)
@@ -63,7 +63,7 @@ exports.findOne = (req, res) => {
 };
 
 
-exports.update = (req, res) => {
+exports.updateTipoCuenta = (req, res) => {
   const id = req.params.id;
 
   TipoCuenta.update(req.body, {
@@ -88,7 +88,7 @@ exports.update = (req, res) => {
 };
 
 
-exports.delete = (req, res) => {
+exports.deleteTipoCuenta = (req, res) => {
   const id = req.params.id;
 
   TipoCuenta.destroy({
@@ -112,7 +112,7 @@ exports.delete = (req, res) => {
     });
 };
 
-exports.deleteAll = (req, res) => {
+exports.deleteAllTipoCuenta = (req, res) => {
     TipoCuenta.destroy({
     where: {},
     truncate: false

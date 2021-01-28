@@ -5,45 +5,45 @@ module.exports = app => {
   
     var router = require("express").Router();
   
- 
-    router.post("/", clientes.create);
+    //RUTAS CLIENTES
+    router.post("/crear-cliente", clientes.createCliente);
    
-    router.get("/", clientes.findAll);
+    router.get("/buscar-clientes", clientes.findAllClientes);
   
-    router.get("/:id", clientes.findOne);
+    router.get("/buscar-cliente/:id", clientes.findOneCliente);
   
-    router.put("/:id", clientes.update);
+    router.put("/actualizar-cliente/:id", clientes.updateCliente);
   
-    router.delete("/:id", clientes.delete);
+    router.delete("/eliminar-cliente/:id", clientes.deleteCliente);
   
-    router.delete("/", clientes.deleteAll);
+    router.delete("/eliminartodo-cliente", clientes.deleteAllClientes);
 
-    ////
+    //RUTAS CUENTAS
 
-    router.post("/", cuentas.create);
+    router.post("/crear-cuenta", cuentas.createCuenta);
    
-    router.get("/", cuentas.findAll);
+    router.get("/buscar-cuentas", cuentas.findAllCuentas);
   
-    router.get("/:id", cuentas.findOne);
+    router.get("/buscar-cuenta/:id", cuentas.findOneCuenta);
   
-    router.put("/:id", cuentas.update);
+    router.put("/actualizar-cuenta/:id", cuentas.updateCuenta);
   
-    router.delete("/:id", cuentas.delete);
+    router.delete("/eliminar-cuenta/:id", cuentas.deleteCuenta);
   
-    router.delete("/", cuentas.deleteAll);
+    router.delete("/eliminartodo-cuenta", cuentas.deleteAllCuentas);
 
-    /////
-    router.post("/", tipoCuentas.create);
+    //RUTAS TIPO DE CUENTAS
+    router.post("/crear-tipocuenta", tipoCuentas.createTipoCuenta);
    
-    router.get("/", tipoCuentas.findAll);
+    router.get("/buscar-tipocuentas", tipoCuentas.findAllTipoCuentas);
   
-    router.get("/:id", tipoCuentas.findOne);
+    router.get("/buscar-tipocuenta/:id", tipoCuentas.findOneTipoCuenta);
   
-    router.put("/:id", tipoCuentas.update);
+    router.put("/actualizar-tipocuenta/:id", tipoCuentas.updateTipoCuenta);
   
-    router.delete("/:id", tipoCuentas.delete);
+    router.delete("/eliminar-tipocuenta/:id", tipoCuentas.deleteTipoCuenta);
   
-    router.delete("/", tipoCuentas.deleteAll);
+    router.delete("/eliminartodo-tipocuenta", tipoCuentas.deleteAllTipoCuenta);
 
   
     app.use('/api/prueba', router);

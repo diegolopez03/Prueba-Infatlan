@@ -3,9 +3,9 @@ const Cliente = db.clientes;
 const Op = db.Sequelize.Op;
 
 
-exports.create = (req, res) => {
+exports.createCliente = (req, res) => {
  
-  if (!req.body.title) {
+  if (!req.body.nombre) {
     res.status(400).send({
       message: "No puede ir vacio"
     });
@@ -39,9 +39,9 @@ exports.create = (req, res) => {
 };
 
 
-exports.findAll = (req, res) => {
-  const title = req.query.title;
-  var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
+exports.findAllClientes = (req, res) => {
+  const nombre = req.query.nombre;
+  var condition = nombre ? { nombre: { [Op.like]: `%${nombre}%` } } : null;
 
   Cliente.findAll({ where: condition })
     .then(data => {
@@ -56,7 +56,7 @@ exports.findAll = (req, res) => {
 };
 
 
-exports.findOne = (req, res) => {
+exports.findOneCliente = (req, res) => {
   const id = req.params.id;
 
   Cliente.findByPk(id)
@@ -71,7 +71,7 @@ exports.findOne = (req, res) => {
 };
 
 
-exports.update = (req, res) => {
+exports.updateCliente = (req, res) => {
   const id = req.params.id;
 
   Cliente.update(req.body, {
@@ -96,7 +96,7 @@ exports.update = (req, res) => {
 };
 
 
-exports.delete = (req, res) => {
+exports.deleteCliente = (req, res) => {
   const id = req.params.id;
 
   Cliente.destroy({
@@ -120,7 +120,7 @@ exports.delete = (req, res) => {
     });
 };
 
-exports.deleteAll = (req, res) => {
+exports.deleteAllClientes = (req, res) => {
   Cliente.destroy({
     where: {},
     truncate: false

@@ -34,11 +34,11 @@ db.cuentas.belongsTo(db.clientes, {
   as: "cliente",
 });
 
-db.cuentas.hasOne(db.tipoCuentas, { as: "tipoCuenta" });
-// db.tipoCuentas.belongsTo(db.cuentas, {
-//   foreignKey: "cuentaId",
-//   as: "cuenta",
-// });
+// db.tipoCuentas.hasMany(db.cuentas, { as: "tipoCuenta" });
+db.cuentas.belongsTo(db.tipoCuentas, {
+  foreignKey: "tipoCuentaId",
+  as: "tipoCuenta",
+});
 
 
 // db.tipoCuentas.BelongsTo(db.cuentas, {
