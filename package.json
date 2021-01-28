@@ -1,0 +1,31 @@
+{
+  "name": "prueba-infatlan",
+  "version": "1.0.0",
+  "description": "Prueba técnica Infatlan",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diegolopez03/Prueba-Infatlan.git"
+  },
+  "keywords": [
+    "Nodejs",
+    "API",
+    "Mysql"
+  ],
+  "author": "Diego López",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/diegolopez03/Prueba-Infatlan/issues"
+  },
+  "homepage": "https://github.com/diegolopez03/Prueba-Infatlan#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.5.0"
+  }
+}
