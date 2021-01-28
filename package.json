@@ -2,7 +2,7 @@
   "name": "prueba-infatlan",
   "version": "1.0.0",
   "description": "Prueba técnica Infatlan",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -25,7 +25,7 @@
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "mysql2": "^2.2.5",
-    "sequelize": "^6.5.0"
+    "mysql2": "^2.0.2",
+    "sequelize": "^5.21.2"
   }
 }
